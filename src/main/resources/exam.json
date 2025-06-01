@@ -1,0 +1,73 @@
+{
+  "properties": [
+    {
+      "type": "object",
+      "name": "detail",
+      "properties": [
+        {
+          "type": "STRING",
+          "name": "notice"
+        },
+        {
+          "type": "LONG",
+          "name": "size",
+          "domain": {
+            "type": "RANGE",
+            "from": 1,
+            "to": 20
+          }
+        }
+      ]
+    },
+    {
+      "type": "LONG",
+      "name": "price"
+    },
+    {
+      "type": "STRING",
+      "name": "name"
+    },
+    {
+      "type": "STRING",
+      "name": "category",
+      "domain": {
+        "type": "ENUM",
+        "values": [
+          "BOOKS",
+          "FOOD"
+        ]
+      }
+    },
+    {
+      "type": "DATE",
+      "name": "release",
+      "domain": {
+        "type": "RANGE",
+        "start": "2024-01-01",
+        "end": "2025-01-01"
+      }
+    },
+    {
+      "type": "STRING",
+      "name": "image",
+      "domain": {
+        "type": "IMAGE"
+      }
+    },
+    {
+      "type": "STRING",
+      "name": "email",
+      "domain": {
+        "type": "EMAIL"
+      }
+    },
+    {
+      "type": "STRING",
+      "name": "tag",
+      "domain": {
+        "multiple": true
+      }
+    }
+  ]
+}
+

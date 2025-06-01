@@ -1,0 +1,17 @@
+{
+  "detail": {
+    "notice": "BlTD",
+    "size": 14
+  },
+  "price": 704913328836891658,
+  "name": "T",
+  "category": "BOOKS",
+  "release": "2024-02-22T05:53:30",
+  "image": "https://picsum.photos/seed/3504ef64-b974-4013-a5a6-fc862bac6bbe/200/200",
+  "email": "7b316@mail.com",
+  "tag": [
+    "0283b@example.com",
+    "70860@mail.com",
+    "f7105@example.com"
+  ]
+}
