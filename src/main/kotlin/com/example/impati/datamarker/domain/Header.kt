@@ -1,0 +1,6 @@
+package com.example.impati.datamarker.domain
+
+data class Header(
+    val key: String,
+    val value: String
+)

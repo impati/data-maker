@@ -1,0 +1,42 @@
+### 스펙 생성
+POST http://localhost:8000/spec
+Content-Type: application/json
+
+{
+  "url": "http://localhost:8081/sellers",
+  "path": "",
+  "method": "POST",
+  "header": [
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    }
+  ],
+  "queryParam": [],
+  "properties": [
+    {
+      "type": "STRING",
+      "name": "identification"
+    },
+    {
+      "type": "STRING",
+      "name": "password"
+    },
+    {
+      "type": "STRING",
+      "name": "sellerName"
+    },
+    {
+      "type": "STRING",
+      "name": "email",
+      "domain": {
+        "type": "EMAIL"
+      }
+    },
+    {
+      "type": "STRING",
+      "name": "account"
+    }
+  ],
+  "name": "셀러 등록"
+}

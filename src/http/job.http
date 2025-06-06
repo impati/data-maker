@@ -1,0 +1,12 @@
+### 잡 생성
+POST http://localhost:8000/jobs
+Content-Type: application/json
+
+{
+  "duration": 1,
+  "tps": 1,
+  "specId": "78a69"
+}
+
+### 잡 실행
+POST http://localhost:8000/jobs/6aeae/execution

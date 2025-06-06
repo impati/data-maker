@@ -11,9 +11,7 @@ object BasicEncoder {
             is LocalDateTime -> "\"$value\""
             is Int -> value.toString()
             is List<*> -> {
-                // List 내부 아이템을 valueEncode로 다시 재귀 호출
                 val encodedElements = value.map { element ->
-                    // 리스트가 Any? 타입(List<Any?>)일 수 있으니 null 체크
                     if (element == null) {
                         "null"
                     } else {
