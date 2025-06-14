@@ -4,7 +4,10 @@ Content-Type: application/json
 
 {
   "url": "http://localhost:8081/sellers",
-  "path": "",
+  "path": {
+    "value": "",
+    "pathVariable": []
+  },
   "method": "POST",
   "header": [
     {
@@ -13,30 +16,155 @@ Content-Type: application/json
     }
   ],
   "queryParam": [],
-  "properties": [
-    {
-      "type": "STRING",
-      "name": "identification"
-    },
-    {
-      "type": "STRING",
-      "name": "password"
-    },
-    {
-      "type": "STRING",
-      "name": "sellerName"
-    },
-    {
-      "type": "STRING",
-      "name": "email",
-      "domain": {
-        "type": "EMAIL"
+  "payload": {
+    "properties": [
+      {
+        "type": "STRING",
+        "name": "identification"
+      },
+      {
+        "type": "STRING",
+        "name": "password"
+      },
+      {
+        "type": "STRING",
+        "name": "sellerName"
+      },
+      {
+        "type": "STRING",
+        "name": "email",
+        "domain": {
+          "type": "EMAIL"
+        }
+      },
+      {
+        "type": "STRING",
+        "name": "account"
       }
-    },
-    {
-      "type": "STRING",
-      "name": "account"
-    }
-  ],
+    ]
+  },
   "name": "셀러 등록"
 }
+
+### 상품 스펙 생성
+POST http://localhost:8000/spec
+Content-Type: application/json
+
+{
+  "url": "http://localhost:8081",
+  "path": {
+    "value": "/sellers/{sellerId}/products",
+    "pathVariable": [
+      {
+        "type": "LONG",
+        "name": "sellerId",
+        "domain": {
+          "type": "RANGE",
+          "from": 20,
+          "to": 100
+        }
+      }
+    ]
+  },
+  "method": "POST",
+  "header": [
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    }
+  ],
+  "queryParam": [],
+  "payload": {
+    "properties": [
+      {
+        "type": "STRING",
+        "name": "representativeImage",
+        "domain": {
+          "type": "IMAGE"
+        }
+      },
+      {
+        "type": "STRING",
+        "name": "name"
+      },
+      {
+        "type": "LONG",
+        "name": "price",
+        "domain": {
+          "type": "RANGE",
+          "from": 1000,
+          "to": 100000
+        }
+      },
+      {
+        "type": "OBJECT",
+        "name": "stock",
+        "properties": [
+          {
+            "type": "STRING",
+            "name": "ids",
+            "domain": {
+              "multiple": true
+            }
+          },
+          {
+            "type": "LONG",
+            "name": "quantity",
+            "domain": {
+              "type": "RANGE",
+              "from": 1000,
+              "to": 100000
+            }
+          }
+        ]
+      },
+      {
+        "type": "OBJECT",
+        "name": "productDetail",
+        "properties": [
+          {
+            "type": "STRING",
+            "name": "qualityAssuranceStandard"
+          },
+          {
+            "type": "STRING",
+            "name": "notice"
+          }
+        ]
+      },
+      {
+        "type": "STRING",
+        "name": "category",
+        "domain": {
+          "type": "ENUM",
+          "values": [
+            "ELECTRONICS",
+            "CLOTHING",
+            "FOOD",
+            "FURNITURE",
+            "SPORTS",
+            "BOOKS",
+            "BEAUTY",
+            "HOME_GOODS",
+            "PET_SUPPLIES",
+            "OTHERS"
+          ]
+        }
+      },
+      {
+        "type": "STRING",
+        "name": "tags",
+        "domain": {
+          "multiple": true
+        }
+      }
+    ]
+  },
+  "name": "셀러 상품 등록"
+}
+
+### 모든 스펙 조회
+GET http://localhost:8000/spec
+
+### payload 실행
+GET http://localhost:8000/spec/1a962de

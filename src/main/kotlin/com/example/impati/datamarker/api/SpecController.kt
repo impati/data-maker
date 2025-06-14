@@ -3,10 +3,7 @@ package com.example.impati.datamarker.api
 import com.example.impati.datamarker.domain.HttpSpec
 import com.example.impati.datamarker.domain.HttpSpecRepository
 import org.springframework.http.ResponseEntity
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestBody
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 
 @RestController
 class SpecController(
@@ -21,5 +18,11 @@ class SpecController(
     fun list(): ResponseEntity<List<HttpSpec>> {
 
         return ResponseEntity.ok(httpSpecRepository.findAll())
+    }
+
+    @GetMapping("/spec/{specId}")
+    fun buildPayload(@PathVariable specId: String): ResponseEntity<String> {
+
+        return ResponseEntity.ok(httpSpecRepository.findById(specId).payload())
     }
 }

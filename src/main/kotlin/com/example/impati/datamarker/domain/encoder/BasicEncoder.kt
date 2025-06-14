@@ -38,7 +38,7 @@ object BasicEncoder {
         return builder.toString()
     }
 
-    fun propertiesEncode(properties: List<Property>): String {
+    fun encodePayload(properties: List<Property>): String {
         val builder = StringBuilder()
         builder.append("{")
         builder.append(properties.joinToString(",") { it.build() })

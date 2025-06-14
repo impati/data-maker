@@ -44,11 +44,12 @@ class JobAgentTest {
         )
         val spec = HttpSpec(
             url = "http://localhost:8081/sellers",
-            path = "",
+            path = Path.none(),
             method = HttpMethod.POST,
             header = listOf(Header("Content-Type", "application/json")),
             queryParam = listOf(),
-            properties = properties
+            payload = Payload(properties),
+            name = "hello"
         )
         val job = jobRepository.save(
             Job(

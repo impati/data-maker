@@ -7,6 +7,6 @@ class Job(
     val duration: Long, // 단위는 분
     val tps: Tps,
     val httpSpec: HttpSpec,
-    val jobId: String = UUID.randomUUID().toString().substring(0, 5),
+    val jobId: String = UUID.randomUUID().toString().substring(0, 7),
 ) {
 }

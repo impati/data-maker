@@ -73,7 +73,7 @@ class PropertyTest {
             )
         )
 
-        val result = BasicEncoder.propertiesEncode(properties)
+        val result = BasicEncoder.encodePayload(properties)
 
         /**
          * {
@@ -99,7 +99,7 @@ class PropertyTest {
             )
         )
 
-        val result = BasicEncoder.propertiesEncode(properties)
+        val result = BasicEncoder.encodePayload(properties)
 
         /**
          * {"tags":["hello","world"]}
@@ -187,7 +187,7 @@ class PropertyTest {
             ),
         )
 
-        val result = BasicEncoder.propertiesEncode(properties)
+        val result = BasicEncoder.encodePayload(properties)
 
         println("result = $result")
     }

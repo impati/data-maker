@@ -30,7 +30,7 @@ class Worker(
             .method(HttpMethod.valueOf(spec.method.name))
             .uri { uriBuilder ->
                 uriBuilder
-                    .path(spec.path)
+                    .path(spec.path())
                     .queryParams(queryParams)
                     .build()
             }

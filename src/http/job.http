@@ -5,8 +5,8 @@ Content-Type: application/json
 {
   "duration": 1,
   "tps": 1,
-  "specId": "78a69"
+  "specId": "1a962de"
 }
 
 ### 잡 실행
-POST http://localhost:8000/jobs/6aeae/execution
+POST http://localhost:8000/jobs/2b68774/execution

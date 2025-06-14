@@ -5,20 +5,28 @@ import java.util.*
 
 data class HttpSpec(
     val url: String,
-    val path: String,
+    val path: Path,
     val method: HttpMethod,
     val header: List<Header>,
     val queryParam: List<QueryParam>,
-    val properties: List<Property>,
+    val payload: Payload,
     val name: String,
-    val id: String = UUID.randomUUID().toString().substring(0, 5),
+    val id: String = UUID.randomUUID().toString().substring(0, 7),
 ) {
 
     fun payload(): String? {
-        if (properties.isEmpty()) {
+        if (payload.properties.isEmpty()) {
             return null
         }
 
-        return BasicEncoder.propertiesEncode(properties)
+        return BasicEncoder.encodePayload(payload.properties)
+    }
+
+    fun path(): String {
+        if (path.pathVariable.isEmpty()) {
+            return ""
+        }
+
+        return path.build()
     }
 }
