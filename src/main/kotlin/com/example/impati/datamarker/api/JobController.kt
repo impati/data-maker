@@ -20,6 +20,7 @@ class JobController(
         val httpSpec = specRepository.findById(request.specId)
         val job = jobRepository.save(
             Job(
+                request.type,
                 request.duration,
                 Tps(request.tps),
                 httpSpec
@@ -34,6 +35,7 @@ class JobController(
         val httpSpec = specRepository.findById(request.specId)
         val job = jobRepository.save(
             Job(
+                request.type,
                 request.duration,
                 Tps(request.tps),
                 httpSpec,

@@ -21,12 +21,4 @@ data class HttpSpec(
 
         return BasicEncoder.encodePayload(payload.properties)
     }
-
-    fun path(): String {
-        if (path.pathVariable.isEmpty()) {
-            return ""
-        }
-
-        return path.build()
-    }
 }

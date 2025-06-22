@@ -11,11 +11,11 @@ class PathTest {
             Path(
                 value = "/abc/{id}/hello/{world}",
                 pathVariable = listOf(
-                    PathVariable(
+                    Variable(
                         type = DataType.STRING,
                         name = "id"
                     ),
-                    PathVariable(
+                    Variable(
                         type = DataType.STRING,
                         name = "world"
                     )
@@ -40,40 +40,16 @@ class PathTest {
             Path(
                 value = "/abc/{id}/hello/{world}",
                 pathVariable = listOf(
-                    PathVariable(
+                    Variable(
                         type = DataType.STRING,
                         name = "id"
                     ),
-                    PathVariable(
+                    Variable(
                         type = DataType.STRING,
                         name = "hello"
                     )
                 )
             )
         }.isInstanceOf(IllegalArgumentException::class.java)
-    }
-
-    @Test
-    fun build() {
-        val path = Path(
-            value = "/abc/{id}/hello/{world}",
-            pathVariable = listOf(
-                PathVariable(
-                    type = DataType.LONG,
-                    name = "id",
-                    domain = Domain(
-                        type = DomainType.RANGE,
-                        from = 1,
-                        to = 1000
-                    )
-                ),
-                PathVariable(
-                    type = DataType.STRING,
-                    name = "world"
-                )
-            )
-        )
-
-        println(path.build())
     }
 }

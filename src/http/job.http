@@ -8,5 +8,27 @@ Content-Type: application/json
   "specId": "1a962de"
 }
 
+### 회원 등록 잡 생성 f18d09f
+POST http://localhost:8000/jobs
+Content-Type: application/json
+
+{
+  "type": "SINGLE",
+  "duration": 1,
+  "tps": 1,
+  "specId": "6e0419f"
+}
+
+### 회원 조회 잡 생성 c9df307
+POST http://localhost:8000/jobs
+Content-Type: application/json
+
+{
+  "type": "SINGLE",
+  "duration": 1,
+  "tps": 1,
+  "specId": "282b7d4"
+}
+
 ### 잡 실행
 POST http://localhost:8000/jobs/2b68774/execution

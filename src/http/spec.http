@@ -163,6 +163,74 @@ Content-Type: application/json
   "name": "셀러 상품 등록"
 }
 
+
+### 회원 등록 스펙 생성 6e0419f
+POST http://localhost:8000/spec
+Content-Type: application/json
+
+{
+  "url": "http://localhost:8080",
+  "path": {
+    "value": "/v1/members",
+    "pathVariable": []
+  },
+  "method": "POST",
+  "header": [
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    }
+  ],
+  "queryParam": [],
+  "payload": {
+    "properties": [
+      {
+        "type": "STRING",
+        "name": "oauthId"
+      },
+      {
+        "type": "STRING",
+        "name": "name"
+      }
+    ]
+  },
+  "name": "회원 등록"
+}
+
+
+### 회원 정보 조회 스펙 생성 282b7d4
+POST http://localhost:8000/spec
+Content-Type: application/json
+
+{
+  "url": "http://localhost:8080",
+  "path": {
+    "value": "/v1/members",
+    "pathVariable": []
+  },
+  "method": "GET",
+  "header": [
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    }
+  ],
+  "queryParam": [
+    {
+      "key": "token",
+      "value": "{token}",
+      "variable": {
+        "type": "STRING",
+        "name": "token"
+      }
+    }
+  ],
+  "payload": {
+    "properties": []
+  },
+  "name": "회원 조회"
+}
+
 ### 모든 스펙 조회
 GET http://localhost:8000/spec
 

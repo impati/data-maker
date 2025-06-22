@@ -13,7 +13,7 @@ class LongValueGenerator : ValueGenerator {
             return Random().nextLong()
         }
         if (domain.multiple) {
-            return IntStream.range(1, Math.max(2, Random().nextInt(5)))
+            return IntStream.range(1, 2.coerceAtLeast(Random().nextInt(5)))
                 .mapToObj { generate(domain) }
                 .toList()
         }

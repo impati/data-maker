@@ -13,4 +13,14 @@ data class Domain(
 ) {
 
 
+    companion object {
+        fun range(from: Int, to: Int): Domain {
+            return Domain(
+                type = DomainType.RANGE,
+                from = from,
+                to = to
+            )
+        }
+    }
+
 }

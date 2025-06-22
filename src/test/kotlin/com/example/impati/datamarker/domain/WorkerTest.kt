@@ -40,14 +40,13 @@ class WorkerTest {
         )
 
         worker.work(
-            HttpSpec(
+            HttpRequest(
                 url = "http://localhost:8081/sellers",
-                path = Path.none(),
+                path = "",
                 method = HttpMethod.POST,
-                header = listOf(Header("Content-Type", "application/json")),
-                queryParam = listOf(),
-                payload = Payload(properties),
-                name = "hello"
+                headers = listOf(Header("Content-Type", "application/json")),
+                queryParams = listOf(),
+                payload = ""
             )
         )
 

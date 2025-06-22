@@ -2,11 +2,11 @@ package com.example.impati.datamarker.domain
 
 data class Path(
     val value: String,
-    val pathVariable: List<PathVariable>
+    val pathVariable: List<Variable>
 ) {
 
     init {
-        val regex = Regex("""\{([^}]+)\}""")
+        val regex = Regex("""\{([^}]+)}""")
         val names = regex.findAll(value)
             .map { it.groupValues[1] }
             .toList()
@@ -21,13 +21,7 @@ data class Path(
         }
     }
 
-    fun build(): String {
-        var result = value
-        for (variable in pathVariable) {
-            val name = variable.name
-            result = result.replace("{$name}", variable.build())
-        }
-        
-        return result
+    fun isPathVariableEmpty(): Boolean {
+        return pathVariable.isEmpty()
     }
 }

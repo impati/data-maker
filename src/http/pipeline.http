@@ -1,0 +1,24 @@
+### 파이프라인 생성
+POST http://localhost:8000/pipeline
+Content-Type: application/json
+
+{
+  "name": "회원 등록 후 정보 조회",
+  "steps": [
+    {
+      "jobId": "f18d09f"
+    },
+    {
+      "jobId": "c9df307"
+    }
+  ]
+}
+
+### 파이프라인 조회
+GET http://localhost:8000/pipeline
+Content-Type: application/json
+
+
+### 파이프라인 실행
+POST http://localhost:8000/pipeline/79955bf/execution
+Content-Type: application/json

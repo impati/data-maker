@@ -55,7 +55,8 @@ class JobAgentTest {
             Job(
                 duration = 1,
                 tps = Tps(1),
-                spec
+                type = JobType.SINGLE,
+                httpSpec = spec
             )
         )
 
