@@ -17,11 +17,10 @@ class JobAgent(
         val latch = CountDownLatch(1)
 
         val job = jobRepository.findById(jobId)
-        val httpRequest = httpRequestBuilder.build(job.httpSpec)
         Flux.interval(Duration.ZERO, Duration.ofMillis(1000 / job.tps.value))
             .take(Duration.ofSeconds(job.duration))
             .doOnNext {
-                worker.work(httpRequest)
+                worker.work(httpRequestBuilder.build(job.httpSpec))
             }
             .doOnTerminate { latch.countDown() }
             .subscribe()

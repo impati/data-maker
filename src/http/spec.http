@@ -3,47 +3,27 @@ POST http://localhost:8000/spec
 Content-Type: application/json
 
 {
-  "url": "http://localhost:8081/sellers",
+  "url": "http://localhost:8080/limit",
   "path": {
     "value": "",
     "pathVariable": []
   },
-  "method": "POST",
+  "method": "GET",
   "header": [
     {
       "key": "Content-Type",
       "value": "application/json"
+    },
+    {
+      "key": "Authorization",
+      "value": "Bearer token"
     }
   ],
   "queryParam": [],
   "payload": {
-    "properties": [
-      {
-        "type": "STRING",
-        "name": "identification"
-      },
-      {
-        "type": "STRING",
-        "name": "password"
-      },
-      {
-        "type": "STRING",
-        "name": "sellerName"
-      },
-      {
-        "type": "STRING",
-        "name": "email",
-        "domain": {
-          "type": "EMAIL"
-        }
-      },
-      {
-        "type": "STRING",
-        "name": "account"
-      }
-    ]
+    "properties": []
   },
-  "name": "셀러 등록"
+  "name": "데모 호출"
 }
 
 ### 상품 스펙 생성
@@ -236,3 +216,126 @@ GET http://localhost:8000/spec
 
 ### payload 실행
 GET http://localhost:8000/spec/1a962de
+
+### 영화 등록 스펙 생성 e15055b
+POST http://localhost:8000/spec
+Content-Type: application/json
+
+{
+  "url": "http://localhost:8080",
+  "path": {
+    "value": "/v1/movies",
+    "pathVariable": []
+  },
+  "method": "POST",
+  "header": [
+    {
+      "key": "Content-Type",
+      "value": "application/json"
+    }
+  ],
+  "queryParam": [],
+  "payload": {
+    "properties": [
+      {
+        "type": "STRING",
+        "name": "movieName"
+      },
+      {
+        "type": "STRING",
+        "name": "poster",
+        "domain": {
+          "type": "IMAGE"
+        }
+      },
+      {
+        "type": "STRING",
+        "name": "director"
+      },
+      {
+        "type": "STRING",
+        "name": "actors",
+        "domain": {
+          "multiple": true
+        }
+      },
+      {
+        "type": "OBJECT",
+        "name": "detail",
+        "properties": [
+          {
+            "type": "DATE",
+            "name": "open",
+            "domain": {
+              "type": "RANGE",
+              "start": "1997-01-01T00:00:00",
+              "end": "2025-12-31T00:00:00"
+            }
+          },
+          {
+            "type": "STRING",
+            "name": "categories",
+            "domain": {
+              "type": "ENUM",
+              "multiple": true,
+              "values": [
+                "ACTION",
+                "ADVENTURE",
+                "ANIMATION",
+                "BIOGRAPHY",
+                "COMEDY",
+                "CRIME",
+                "DOCUMENTARY",
+                "DRAMA",
+                "FAMILY",
+                "FANTASY",
+                "HISTORY",
+                "HORROR",
+                "MUSIC",
+                "MUSICAL",
+                "MYSTERY",
+                "ROMANCE",
+                "SCI_FI",
+                "SPORT",
+                "THRILLER",
+                "WAR",
+                "WESTERN",
+                "ETC"
+              ]
+            }
+          },
+          {
+            "type": "STRING",
+            "name": "country",
+            "domain": {
+              "type": "ENUM",
+              "values": [
+                "USA",
+                "KOR",
+                "JPN",
+                "CHN",
+                "GBR",
+                "FRA",
+                "ETC"
+              ]
+            }
+          },
+          {
+            "type": "LONG",
+            "name": "runningTime",
+            "domain": {
+              "type": "RANGE",
+              "from": 60,
+              "to": 200
+            }
+          },
+          {
+            "type": "STRING",
+            "name": "distributor"
+          }
+        ]
+      }
+    ]
+  },
+  "name": "영화 등록"
+}

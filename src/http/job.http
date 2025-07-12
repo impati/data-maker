@@ -3,9 +3,10 @@ POST http://localhost:8000/jobs
 Content-Type: application/json
 
 {
-  "duration": 1,
-  "tps": 1,
-  "specId": "1a962de"
+  "type": "SINGLE",
+  "duration": 10,
+  "tps": 5,
+  "specId": "bdabee2"
 }
 
 ### 회원 등록 잡 생성 f18d09f
@@ -25,10 +26,13 @@ Content-Type: application/json
 
 {
   "type": "SINGLE",
-  "duration": 1,
+  "duration": 1000,
   "tps": 1,
-  "specId": "282b7d4"
+  "specId": "3b27d65"
 }
 
 ### 잡 실행
-POST http://localhost:8000/jobs/2b68774/execution
+POST http://localhost:8000/jobs/9f4d926/execution
+
+### 잡 실행 2
+POST http://localhost:8000/jobs/24d83d2/executionMemoryQueueLimiter

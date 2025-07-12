@@ -5,6 +5,7 @@ import com.example.impati.datamarker.domain.job.Job
 import com.example.impati.datamarker.domain.job.JobAgent
 import com.example.impati.datamarker.domain.job.JobRepository
 import com.example.impati.datamarker.domain.job.Tps
+import com.example.impati.datamarker.domain.limiter.MemoryQueueLimiter
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
@@ -12,7 +13,8 @@ import org.springframework.web.bind.annotation.*
 class JobController(
     private val jobRepository: JobRepository,
     private val specRepository: HttpSpecRepository,
-    private val jobAgent: JobAgent
+    private val jobAgent: JobAgent,
+    private val memoryQueueLimiter: MemoryQueueLimiter
 ) {
 
     @PostMapping("/jobs")
@@ -54,6 +56,13 @@ class JobController(
     @PostMapping("/jobs/{jobId}/execution")
     fun execute(@PathVariable jobId: String): ResponseEntity<String> {
         jobAgent.run(jobId)
+
+        return ResponseEntity.ok("done")
+    }
+
+    @PostMapping("/jobs/{jobId}/executionMemoryQueueLimiter")
+    fun executeMemoryQueueLimiter(@PathVariable jobId: String): ResponseEntity<String> {
+        memoryQueueLimiter.run(jobId)
 
         return ResponseEntity.ok("done")
     }
